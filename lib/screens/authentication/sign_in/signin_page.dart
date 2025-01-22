@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 
 
-class SignUpPage extends StatefulWidget{
-  const SignUpPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget{
+  const SignInPage({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
 
-class _SignUpPageState extends State<SignUpPage>{
+class _SignInPageState extends State<SignInPage>{
 
   @override
   Widget build(BuildContext context){
@@ -20,18 +20,18 @@ class _SignUpPageState extends State<SignUpPage>{
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          const SizedBox(height: 50), // spacing from the top
+          const SizedBox(height: 5), // spacing from the top
           Image.asset(
             'assets/images/linkedin_offical_logo.png',
-            width: 30.0,
-            height: 30.0,
+            width: 100.0,
+            height: 100.0,
             ),
           
-          const SizedBox(height: 50),
+          const SizedBox(height: 15),
           Text(
             'Sign in',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 35,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             )

@@ -12,9 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Navigate to the login page (or home page) after a delay
-    Future.delayed(const Duration(seconds: 10), () {
-      Navigator.pushReplacementNamed(context, '/login'); // Adjust route name as needed
+    // Navigate to the specified route after a delay
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/signin');
     });
   }
 
