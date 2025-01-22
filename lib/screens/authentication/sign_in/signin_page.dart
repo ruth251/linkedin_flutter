@@ -35,7 +35,31 @@ class _SignInPageState extends State<SignInPage>{
               fontWeight: FontWeight.bold,
               color: Colors.black,
             )
-          )
+          ),
+
+          const SizedBox(height:5),
+          RichText(
+            text: TextSpan(
+              text: 'or ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black
+              ),
+
+            children: [
+            TextSpan(
+              text: 'Join Linkedin',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              )
+
+// we will have to add navigation code here to take us to the join linkedin i.e. signup page
+            )
+          ],
+            ),
+          ),
         ]
       )
     );
