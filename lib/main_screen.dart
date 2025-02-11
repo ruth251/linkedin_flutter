@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:linkedin_flutter/routes/app_routes.dart';
 import 'package:linkedin_flutter/screens/home/home_screen.dart';
+import 'package:linkedin_flutter/screens/notification/notification_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const Center(child: Text("Network Screen")),
-    const Center(child: Text("Notifications Screen")),
+    const NotificationsScreen(),
     const Center(child: Text("Jobs Screen")),
   ];
 
@@ -146,7 +147,9 @@ class _MainScreenState extends State<MainScreen> {
             ListTile(
               leading: const Icon(Icons.settings, color: Colors.grey),
               title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "/settings");
+              },
             ),
           ],
         ),
