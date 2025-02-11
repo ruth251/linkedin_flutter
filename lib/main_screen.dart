@@ -53,17 +53,20 @@ class _MainScreenState extends State<MainScreen> {
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
-            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-            child: const Row(
+            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+            child: Row(
               children: [
-                Icon(Icons.search, color: Colors.grey),
-                SizedBox(width: 10),
+                const Icon(Icons.search, color: Colors.grey),
+                const SizedBox(width: 8),
                 Expanded(
-                  child: Text(
-                    'Search',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Search',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
