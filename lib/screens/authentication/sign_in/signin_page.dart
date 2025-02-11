@@ -12,6 +12,9 @@ class SignInPage extends StatefulWidget{
 
 class _SignInPageState extends State<SignInPage>{
 
+  bool isChecked = false;
+
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -233,12 +236,15 @@ class _SignInPageState extends State<SignInPage>{
                   border: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black, width: 1),
                   ),
+
                   enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black, width: 1),
                   ),
+
                   focusedBorder: const UnderlineInputBorder(
                    borderSide: BorderSide(color: Colors.black, width: 1),
                   ),
+                  
                   
                 ),
 
@@ -253,9 +259,11 @@ class _SignInPageState extends State<SignInPage>{
                   border: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black, width: 1),
                   ),
+
                   enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black, width: 1),
                   ),
+
                   focusedBorder: const UnderlineInputBorder(
                    borderSide: BorderSide(color: Colors.black, width: 1),
           ),
@@ -266,7 +274,91 @@ class _SignInPageState extends State<SignInPage>{
                   // },
                 ),
                 obscureText: true, //to hide password input
-              )
+              ),
+
+              const SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Checkbox(
+                    value: isChecked,
+                    activeColor: Colors.green,
+                    onChanged: (bool? value){
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    },
+                  ),
+
+                  const Text(
+                    "Remember me.",
+                    style: TextStyle(fontSize: 17),
+                  ),
+
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                    onTap:  (){
+                      print('Learn more tapped');
+                    },
+                    child: const Text(
+                      'Learn more',
+                      style:TextStyle(
+                        color: Colors.blue,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  
+
+                ],
+              ),
+
+              //Forgot Passsword
+
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: TextButton(
+                      onPressed: () {
+                        print('Forgot password tapped');
+                      }, 
+                      child: const Text(
+                        'Forgot password?',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )
+                      )),
+                  ),
+
+                  const SizedBox(height: 5),
+
+                OutlinedButton(
+                  onPressed: (){
+                    print('Continue button clicked');},
+                    child: Text('Continue'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), //rounded corners
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 10), 
+                      minimumSize: const Size(double.infinity, 50), //button padding
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue,
+                      textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+
+                    ),
+               
+            
+            
+
+          ),
+
             ],
           ),
         ),
