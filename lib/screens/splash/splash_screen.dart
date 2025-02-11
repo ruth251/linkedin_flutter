@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_flutter/routes/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -14,14 +15,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Navigate to the login page (or home page) after a delay
     Future.delayed(const Duration(seconds: 10), () {
-      Navigator.pushReplacementNamed(context, '/login'); // Adjust route name as needed
+      Navigator.pushReplacementNamed(context, AppRoutes.mainScreen);// Adjust route name as needed
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x802B3F4D),
+      backgroundColor: const Color(0x802B3F4D),
       body: Center(
         child: Image.asset(
           'assets/images/linkedin_logo.png',
