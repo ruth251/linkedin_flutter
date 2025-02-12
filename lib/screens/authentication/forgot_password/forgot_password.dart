@@ -8,73 +8,94 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final _formKey = GlobalKey<FormState>(); // Form Key for validation
   final TextEditingController _emailController = TextEditingController();
+
+  String? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Email or phone number is required.";
+    }
+    // Regular expression for email validation
+    final RegExp emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    if (!emailRegex.hasMatch(value)) {
+      return "Enter a valid email address.";
+    }
+    return null; // Input is valid
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20), // Adjust spacing from the top
-            // LinkedIn Logo (Left Aligned)
-            Align(
-              alignment: Alignment.centerLeft, // Moves the logo to the left corner
-              child: Image.asset(
-                'assets/images/linkedin_offical_logo.png',
-                width: 100,
-                height: 100,
-              ),
-            ),
-            const SizedBox(height: 20),
-            // Forgot Password Text
-            const Text(
-              "Forgot password",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            // Email Input Field
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: "Email or Phone",
-                hintText: "Enter your email or phone",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+        child: Form(
+          key: _formKey, // Assigning form key
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20), // Adjust spacing from the top
+              // LinkedIn Logo (Left Aligned)
+              Align(
+                alignment: Alignment.centerLeft, // Moves the logo to the left corner
+                child: Image.asset(
+                  'assets/images/linkedin_offical_logo.png',
+                  width: 100,
+                  height: 100,
                 ),
               ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            const SizedBox(height: 15),
-            // Instruction Text
-            const Text(
-              "We’ll send a verification code to this email or phone number if it matches an existing LinkedIn account.",
-              style: TextStyle(fontSize: 15, color: Colors.black54),
-            ),
-            const SizedBox(height: 30),
-            // Next Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  print("Next button clicked");
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              const SizedBox(height: 20),
+              // Forgot Password Text
+              const Text(
+                "Forgot password",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              // Email Input Field with Validation
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: "Email or Phone",
+                  hintText: "Enter your email or phone",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 15),
                 ),
-                child: const Text(
-                  "Next",
-                  style: TextStyle(color:Colors.white,fontSize: 18, fontWeight: FontWeight.bold),
+                keyboardType: TextInputType.emailAddress,
+                validator: _validateEmail, // Email validation function
+              ),
+              const SizedBox(height: 15),
+              // Instruction Text
+              const Text(
+                "We’ll send a verification code to this email or phone number if it matches an existing LinkedIn account.",
+                style: TextStyle(fontSize: 15, color: Colors.black54),
+              ),
+              const SizedBox(height: 30),
+              // Next Button with Validation Check
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print("Next button clicked - Input is valid");
+                    } else {
+                      print("Invalid email or phone number");
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: const Text(
+                    "Next",
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

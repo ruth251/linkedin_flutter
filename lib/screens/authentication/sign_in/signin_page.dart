@@ -194,7 +194,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          'Sign in with Apple',
+                          'Sign in with Facebook',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,

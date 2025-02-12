@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignInPage(),
-      // initialRoute: AppRoutes.forgotPassword, // Start with the splash screen
-      // onGenerateRoute: AppRoutes.generateRoute,
+    
+      initialRoute: AppRoutes.splash, // Start with the splash screen
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
