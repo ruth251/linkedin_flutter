@@ -4,6 +4,7 @@ import 'package:linkedin_flutter/screens/notification/notification_screen.dart';
 import 'package:linkedin_flutter/screens/search/search_screen.dart';
 import 'package:linkedin_flutter/screens/settings/settings_screen.dart';
 import '../screens/splash/splash_screen.dart';
+import 'package:linkedin_flutter/screens/authentication/sign_in/signin_page.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -11,7 +12,7 @@ class AppRoutes {
   static const String mainScreen = '/main';
   static const String settingScreen = '/settings';
   static const String notificationScreen = '/notification';
-  // static const String login = '/login';
+  static const String signin = '/signin';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -25,8 +26,9 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SettingsPage());
       case notificationScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
-      // case login:
-      //   return MaterialPageRoute(builder: (_) => const LoginPage());
+
+      case signin:
+        return MaterialPageRoute(builder: (_) => const SignInPage());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
