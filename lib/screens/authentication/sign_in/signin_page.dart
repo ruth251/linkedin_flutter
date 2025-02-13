@@ -308,25 +308,25 @@ class _SignInPageState extends State<SignInPage> {
 
                 // Continue Button with Validation
                 ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      print('Form is valid, proceed with sign in');
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "/main");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        minimumSize: const Size(double.infinity, 50),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue.shade700,
+                        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      child: const Text('Continue'),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    minimumSize: const Size(double.infinity, 50),
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue.shade700,
-                    textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('Continue'),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

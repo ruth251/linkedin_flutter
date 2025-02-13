@@ -7,11 +7,13 @@ import 'package:linkedin_flutter/screens/authentication/sign_in/signin_page.dart
 import 'routes/app_routes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,9 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-    
 
-      // home: const SetEmailPass(),
       initialRoute: AppRoutes.splash, // Start with the splash screen
       onGenerateRoute: AppRoutes.generateRoute,
     );

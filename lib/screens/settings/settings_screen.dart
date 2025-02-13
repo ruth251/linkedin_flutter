@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -15,7 +16,9 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, "/main");
+          },
         ),
         actions: [
           IconButton(

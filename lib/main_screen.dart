@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:linkedin_flutter/routes/app_routes.dart';
 import 'package:linkedin_flutter/screens/home/home_screen.dart';
+import 'package:linkedin_flutter/screens/notification/notification_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const Center(child: Text("Network Screen")),
-    const Center(child: Text("Notifications Screen")),
+    const NotificationsScreen(),
     const Center(child: Text("Jobs Screen")),
   ];
 
@@ -30,6 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: Builder(
           builder: (context) => GestureDetector(
             onTap: () {
@@ -50,20 +52,24 @@ class _MainScreenState extends State<MainScreen> {
           child: Container(
             height: MediaQuery.of(context).size.height * 0.05,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Colors.white70,
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
-            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-            child: const Row(
+            padding:
+                const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+            child: Row(
               children: [
-                Icon(Icons.search, color: Colors.grey),
-                SizedBox(width: 10),
+                const Icon(Icons.search, color: Colors.black54),
+                const SizedBox(width: 8),
                 Expanded(
-                  child: Text(
-                    'Search',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Search',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -75,12 +81,13 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
             padding: const EdgeInsets.all(0.0),
             child: IconButton(
-              icon: const ImageIcon(
-                AssetImage('assets/icons/message-icon.png'),
+              onPressed: () {},
+              icon: Image.asset(
+                "assets/icons/message-icon.jpg",
+                height: 20,
+                width: 20,
               ),
-              onPressed: () {
-                // Navigate to Messages
-              },
+              iconSize: 10.0,
             ),
           ),
         ],
@@ -107,6 +114,7 @@ class _MainScreenState extends State<MainScreen> {
                   TextButton(
                     onPressed: () {
                       // Navigate to View Profile
+                      Navigator.pushReplacementNamed(context, "/profile");
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -128,22 +136,28 @@ class _MainScreenState extends State<MainScreen> {
             ),
             const Divider(),
             ListTile(
-              title: const Text('Puzzle games', style: TextStyle(fontWeight: FontWeight.bold)),
+              title: const Text('Puzzle games',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {},
             ),
             ListTile(
-              title: const Text('Saved posts', style: TextStyle(fontWeight: FontWeight.bold)),
+              title: const Text('Saved posts',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {},
             ),
             ListTile(
-              title: const Text('Groups', style: TextStyle(fontWeight: FontWeight.bold)),
+              title: const Text('Groups',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {},
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.settings, color: Colors.grey),
-              title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {},
+              title: const Text('Settings',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              onTap: () {
+                Navigator.pushNamed(context, "/settings");
+              },
             ),
           ],
         ),
@@ -156,6 +170,8 @@ class _MainScreenState extends State<MainScreen> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, size: 20),

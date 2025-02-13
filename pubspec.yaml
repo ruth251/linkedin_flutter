@@ -65,9 +65,27 @@ flutter:
     - assets/images/google_icon.png
     - assets/images/apple_icon.png
     - assets/images/facebook_icon.png
+    - assets/images/post_image1.jpg
+    - assets/images/post_image3.jpg
+    - assets/images/post_image2.jpg
+    - assets/images/profile.png
+    - assets/images/profile3.jpg
+    - assets/images/profile4.jpg
+    - assets/images/profile5.jpg
+    - assets/images/al-profile.jpg
+    - assets/icons/message-icon.jpg
+    - assets/icons/repost-icon.png
+    - assets/icons/send-icon.png
+    - assets/icons/like-icon.png
+    - assets/icons/isliked.png
     - assets/images/pic1.png
     - assets/images/pic2.png
     - assets/images/pic3.png
+  
+
+    
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
