@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       ),
     
 
-      home: const SetEmailPass(),
-      // initialRoute: AppRoutes.splash, // Start with the splash screen
-      // onGenerateRoute: AppRoutes.generateRoute,
+      // home: const SetEmailPass(),
+      initialRoute: AppRoutes.splash, // Start with the splash screen
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_flutter/screens/authentication/forgot_password/forgot_password.dart';
+import 'package:linkedin_flutter/screens/authentication/sign_up/sign_up.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -78,7 +79,10 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        print('Join Linkedin tapped');
+                        Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => const SignUp()
+                      ),
+                      );
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
