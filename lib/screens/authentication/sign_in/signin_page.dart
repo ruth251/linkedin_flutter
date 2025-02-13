@@ -79,10 +79,12 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const SignUp()
-                      ),
-                      );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUp(),
+                          ),
+                        );
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
@@ -101,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 20),
 
-                // Social Media Buttons (Unmodified)
+                // Social Media Buttons
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: OutlinedButton(
@@ -172,7 +174,6 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 12),
 
                 Container(
@@ -209,8 +210,6 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
-
-
 
                 const SizedBox(height: 20),
 
@@ -308,25 +307,25 @@ class _SignInPageState extends State<SignInPage> {
 
                 // Continue Button with Validation
                 ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, "/main");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        minimumSize: const Size(double.infinity, 50),
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.blue.shade700,
-                        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      child: const Text('Continue'),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacementNamed(context, "/main");
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ],
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    minimumSize: const Size(double.infinity, 50),
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue.shade700,
+                    textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Continue'),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

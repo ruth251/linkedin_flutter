@@ -205,7 +205,7 @@ class _SetEmailPassState extends State<SetEmailPass> {
                       onPressed: _isButtonEnabled
                           ? () {
                               if (_formKey.currentState!.validate()) {
-                                print("Continue button clicked");
+                                Navigator.pushReplacementNamed(context, "/main");
                               }
                             }
                           : null,

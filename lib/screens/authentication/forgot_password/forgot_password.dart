@@ -82,7 +82,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print("Next button clicked - Input is valid");
+                      Navigator.pushReplacementNamed(context, "/main");
                     } else {
                       print("Invalid email or phone number");
                     }
