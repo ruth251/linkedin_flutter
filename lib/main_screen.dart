@@ -81,7 +81,9 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
             padding: const EdgeInsets.all(0.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, "/message");
+              },
               icon: Image.asset(
                 "assets/icons/message-icon.jpg",
                 height: 20,
