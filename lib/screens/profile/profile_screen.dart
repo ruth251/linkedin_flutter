@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_flutter/routes/app_routes.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -66,23 +65,15 @@ class ProfilePage extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                height: 120,
+                height: 100,
                 color: Colors.grey[300],
               ),
               Positioned(
                 top: 75,
                 left: 16,
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.white,
-                  child: const CircleAvatar(
-                    radius: 38,
-                    backgroundColor: Colors.teal,
-                    child: Text(
-                      "R",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                  ),
+                child: const CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
             ],
@@ -109,15 +100,15 @@ class ProfilePage extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          side: const BorderSide(color: Color(0xFF003366)), // Darker blue border
+                          side: const BorderSide(color: Color(0xFF003366)),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5), // Matching border radius
+                            borderRadius: BorderRadius.circular(5),
                           ),
                         ),
                         child: const Text(
                           "Open to",
                           style: TextStyle(
-                            color: Color(0xFF003366), // Darker blue text color
+                            color: Color(0xFF003366),
                           ),
                         ),
                       ),
@@ -125,15 +116,15 @@ class ProfilePage extends StatelessWidget {
                       OutlinedButton(
                         onPressed: () {},
                         style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Color(0xFF003366)), // Darker blue border
+                          side: const BorderSide(color: Color(0xFF003366)),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5), // Matching border radius
+                            borderRadius: BorderRadius.circular(5),
                           ),
                         ),
                         child: const Text(
                           "Add section",
                           style: TextStyle(
-                            color: Color(0xFF003366), // Darker blue text color
+                            color: Color(0xFF003366),
                           ),
                         ),
                       ),
@@ -146,15 +137,15 @@ class ProfilePage extends StatelessWidget {
                       OutlinedButton(
                         onPressed: () {},
                         style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Color(0xFF003366)), // Darker blue border
+                          side: const BorderSide(color: Color(0xFF003366)),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5), // Matching border radius
+                            borderRadius: BorderRadius.circular(5),
                           ),
                         ),
                         child: const Text(
                           "Enhance Profile",
                           style: TextStyle(
-                            color: Color(0xFF003366), // Darker blue text color
+                            color: Color(0xFF003366),
                           ),
                         ),
                       ),
@@ -170,27 +161,6 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, size: 20),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.userGroup, size: 20),
-            label: 'Network',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.bell, size: 20),
-            label: 'Notifications',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.briefcase, size: 20),
-            label: 'Jobs',
           ),
         ],
       ),

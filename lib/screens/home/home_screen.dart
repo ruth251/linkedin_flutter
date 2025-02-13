@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isLike = false;
+
+  void onLike() {
+    setState(() {
+      isLike = !isLike;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child:  Column(
-        children:  [
+    return SingleChildScrollView(
+      child: Column(
+        children: [
           PostCard(
             username: 'Alice Smith',
             position: 'Data Scientist at ABC',
             timeAgo: '1h ago',
-            description: 'Just finished an amazing AI project! Excited to share it with you all.',
+            description:
+                'Just finished an amazing AI project! Excited to share it with you all.',
             imagePath: 'assets/images/post_image2.jpg',
+            profileImage: 'assets/images/profile5.jpg',
+            onLike: onLike, // Pass onLike function
+            isLiked: isLike,
           ),
           PostCard(
             username: 'Michael Johnson',
@@ -21,13 +38,20 @@ class HomeScreen extends StatelessWidget {
             timeAgo: '3h ago',
             description: 'Attended a great conference today. Lots of insights!',
             imagePath: 'assets/images/post_image1.jpg',
+            profileImage: 'assets/images/profile3.jpg',
+            onLike: onLike, // Pass onLike function
+            isLiked: isLike,
           ),
           PostCard(
             username: 'Sophia Lee',
             position: 'UX Designer at GHI',
             timeAgo: '5h ago',
-            description: 'Exploring new design trends for 2025. What do you think?',
+            description:
+                'Exploring new design trends for 2025. What do you think?',
             imagePath: 'assets/images/post_image3.jpg',
+            profileImage: 'assets/images/profile4.jpg',
+            onLike: onLike, // Pass onLike function
+            isLiked: isLike,
           ),
         ],
       ),
@@ -41,6 +65,9 @@ class PostCard extends StatelessWidget {
   final String timeAgo;
   final String description;
   final String imagePath;
+  final String profileImage;
+  final VoidCallback onLike;
+  final bool isLiked;
 
   const PostCard({
     super.key,
@@ -49,24 +76,28 @@ class PostCard extends StatelessWidget {
     required this.timeAgo,
     required this.description,
     required this.imagePath,
+    required this.profileImage,
+    required this.onLike,
+    required this.isLiked,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color: Colors.white,
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildHeader(),
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             _buildPostDescription(),
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             _buildPostMedia(),
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             _buildPostStats(),
             const Divider(),
             _buildPostActions(),
@@ -79,38 +110,59 @@ class PostCard extends StatelessWidget {
   Widget _buildHeader() {
     return Row(
       children: [
-        const CircleAvatar(
+        CircleAvatar(
           radius: 24,
-          backgroundImage: AssetImage('assets/images/profile.png'),
+          backgroundImage: AssetImage(profileImage),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(username, style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text(position, style: const TextStyle(color: Colors.grey)),
-              Text(timeAgo, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+              Text(username,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text(
+                position,
+                style: TextStyle(color: Colors.grey.shade700),
+              ),
+              Text(
+                timeAgo,
+                style: TextStyle(color: Colors.grey.shade700, fontSize: 10),
+              ),
             ],
           ),
         ),
-        TextButton(onPressed: () {}, child: const Text('Connect')),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            ' + Follow',
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ],
     );
   }
 
   Widget _buildPostDescription() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          description,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        description,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
+      TextButton(
+        onPressed: () {},
+        child: const Text(
+          'See more',
+          style: TextStyle(
+              color: Colors.blue), // Change this to your desired color
         ),
-        TextButton(onPressed: () {}, child: const Text('See more')),
-      ],
-    );
+      ),
+    ]);
   }
 
   Widget _buildPostMedia() {
@@ -127,11 +179,13 @@ class PostCard extends StatelessWidget {
   }
 
   Widget _buildPostStats() {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('120 likes', style: TextStyle(color: Colors.grey)),
-        Text('13 comments • 330 reposts', style: TextStyle(color: Colors.grey)),
+        Text('${isLiked ? 121 : 120} likes',
+            style: const TextStyle(color: Colors.grey)),
+        const Text('13 comments • 330 reposts',
+            style: TextStyle(color: Colors.grey)),
       ],
     );
   }
@@ -140,23 +194,29 @@ class PostCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildAction(Icons.thumb_up_off_alt, 'Like', () {}),
-        _buildAction(Icons.comment, 'Comment', () {}),
-        _buildAction(Icons.share, 'Share', () {}),
+        _buildAction(
+          isLiked ? 'assets/icons/isliked.png' : 'assets/icons/like-icon.png',
+          'Like',
+          onLike,
+        ),
+        _buildAction('assets/icons/message-icon.jpg', 'Comment', () {}),
+        _buildAction('assets/icons/repost-icon.png', 'Repost', () {}),
+        _buildAction('assets/icons/send-icon.png', 'Send', () {}),
       ],
     );
   }
 
-  Widget _buildAction(IconData icon, String label, VoidCallback onPressed) {
-    return Column(
-      children: [
-        IconButton(
-          icon: Icon(icon, size: 20, color: Colors.grey),
-          onPressed: onPressed,
-        ),
-        const SizedBox(height: 4),
-        Text(label, style: const TextStyle(color: Colors.grey)),
-      ],
+  Widget _buildAction(String assetPath, String label, VoidCallback onPressed) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(assetPath, width: 20, height: 20),
+          const SizedBox(height: 2),
+          Text(label, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+        ],
+      ),
     );
   }
 }

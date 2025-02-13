@@ -292,7 +292,7 @@ class _SignInPageState extends State<SignInPage> {
                     const SizedBox(height: 5),
                     ElevatedButton(
                       onPressed: () {
-                        print('Continue button clicked');
+                        Navigator.pushReplacementNamed(context, "/main");
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
