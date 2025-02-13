@@ -11,16 +11,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>(); // Form Key for validation
   final TextEditingController _emailController = TextEditingController();
 
-  String? _validateEmail(String? value) {
+  String? _validateEmailOrPhone(String? value) {
     if (value == null || value.isEmpty) {
       return "Email or phone number is required.";
     }
     // Regular expression for email validation
     final RegExp emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
-    if (!emailRegex.hasMatch(value)) {
-      return "Enter a valid email address.";
+
+    final RegExp phoneRegex = RegExp(r"^\d{10,15}$");
+
+    if (emailRegex.hasMatch(value) || phoneRegex.hasMatch(value)) {
+      return null;
+    } else {
+      return "Enter a valid email or phone number";
     }
-    return null; // Input is valid
+    
+
   }
 
   @override
@@ -61,7 +67,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                validator: _validateEmail, // Email validation function
+                validator: _validateEmailOrPhone, // Email validation function
               ),
               const SizedBox(height: 15),
               // Instruction Text
