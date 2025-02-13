@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_flutter/main_screen.dart';
+import 'package:linkedin_flutter/screens/messages/messages_screen.dart';
 import 'package:linkedin_flutter/screens/notification/notification_screen.dart';
 import 'package:linkedin_flutter/screens/search/search_screen.dart';
 import 'package:linkedin_flutter/screens/settings/settings_screen.dart';
@@ -19,11 +20,6 @@ class AppRoutes {
   static const String notificationScreen = '/notification';
   static const String signin = '/signin';
   static const String profilePage = '/profile';
-  static const String forgotPassword = '/forgotpassword';
-  static const String signup = '/signup';
-  static const String addName = '/name';
-  static const String emailPass = '/emailPass';
-
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -42,14 +38,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case profilePage:
         return MaterialPageRoute(builder: (_) => const ProfilePage());
-      case forgotPassword:
-        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
-      case signup:
-        return MaterialPageRoute(builder: (_) => const SignUp());
-      case addName:
-        return MaterialPageRoute(builder: (_) => const AddName());
-      case emailPass:
-        return MaterialPageRoute(builder: (_) => const SetEmailPass());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
