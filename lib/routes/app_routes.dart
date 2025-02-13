@@ -7,6 +7,10 @@ import 'package:linkedin_flutter/screens/settings/settings_screen.dart';
 import '../screens/splash/splash_screen.dart';
 import 'package:linkedin_flutter/screens/authentication/sign_in/signin_page.dart';
 import 'package:linkedin_flutter/screens/profile/profile_screen.dart';
+import 'package:linkedin_flutter/screens/authentication/sign_up/add_name.dart';
+import 'package:linkedin_flutter/screens/authentication/forgot_password/forgot_password.dart';
+import 'package:linkedin_flutter/screens/authentication/sign_up/sign_up.dart';
+import 'package:linkedin_flutter/screens/authentication/sign_up/email_password.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -16,8 +20,6 @@ class AppRoutes {
   static const String notificationScreen = '/notification';
   static const String signin = '/signin';
   static const String profilePage = '/profile';
-  static const String messagesScreen = '/message';
-
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -36,8 +38,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case profilePage:
         return MaterialPageRoute(builder: (_) => const ProfilePage());
-      case messagesScreen:
-        return MaterialPageRoute(builder: (_) => const MessagesScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
